@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  go-rss-postgres:
+    image: postgres:11-alpine
+    container_name: go-rss
+    ports:
+      - ${PG_PORT}:5432
+    environment:
+      POSTGRES_USER: ${PG_USERNAME}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: ${PG_DB}
+    tmpfs:
+      - /data
